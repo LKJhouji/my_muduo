@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/Channel.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/Channel.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/Channel.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/CurrentThread.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/CurrentThread.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/CurrentThread.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/DefaultPoller.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/DefaultPoller.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/DefaultPoller.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/EpollPoller.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/EpollPoller.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/EpollPoller.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/EventLoop.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/EventLoop.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/EventLoop.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/InetAddress.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/InetAddress.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/InetAddress.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/Log.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/Log.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/Log.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/Poller.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/Poller.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/Poller.cc"
+},
+{
+  "directory": "/root/houji_project/webserver/muduo-webserver/my_muduo/build",
+  "command": "/usr/bin/g++ -Dmy_muduo_EXPORTS   -g -std=c++11 -g -fPIC -o CMakeFiles/my_muduo.dir/Timestamp.cc.o -c /root/houji_project/webserver/muduo-webserver/my_muduo/Timestamp.cc",
+  "file": "/root/houji_project/webserver/muduo-webserver/my_muduo/Timestamp.cc"
+}
+]
