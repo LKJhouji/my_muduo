@@ -1,32 +1,50 @@
 #pragma once
 
-#include <functional>
+#include <sys/syscall.h>
+#include <unistd.h>
+#include <iostream>
 #include <string>
+#include <memory>
+#include <thread>
+#include <functional>
+#include <atomic>
 
 #include "noncopyable.h"
+
+
+namespace CurrentThread {
+    extern __thread int t_cachedTid;
+    inline int tid() {
+        if (t_cachedTid == 0) {
+            t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
+        }
+        return t_cachedTid;
+    }
+};
 
 class Thread : noncopyable {
 public:
     using ThreadFunc = std::function<void()>;
-    using string = std::string;
 
-    explicit Thread(ThreadFunc func, const string& name);
-
+    explicit Thread(ThreadFunc, const std::string &name = std::string());
     ~Thread();
+
     void start();
-    int join();
+    void join();
 
     bool started() const { return started_; }
     pid_t tid() const { return tid_; }
-    const string& name() { return name_; }
+    const std::string& name() const { return name_; }
+
+    static int numCreated() { return numCreated_; }
 private:
     void setDefaultName();
 
     bool started_;
     bool joined_;
-    pthread_t pthreadId_;
+    std::shared_ptr<std::thread> thread_;
     pid_t tid_;
     ThreadFunc func_;
-    string name_;
-
+    std::string name_;
+    static std::atomic_int numCreated_;
 };

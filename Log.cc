@@ -1,34 +1,38 @@
 #include "Log.h"
 
-//获取日志对象
 Log& Log::getInstance() {
     static Log log;
     return log;
 }
 
-//写日志 [日志级别] time : msg
-void Log::writeLog(std::string& msg) {
-    switch (level_)
+
+// [] : time, msg
+void Log::writeLog(const char* s) {
+    std::string ss;
+    switch (logLevel_)
     {
     case INFO:
-        std::cout << "[INFO] ";
+        ss += "[INFO] : ";
         break;
     case DEBUG:
-        std::cout << "[DEBUG] ";
-        break;
-    case WARN:
-        std::cout << "[WARN] ";
+        ss += "[DEBUG] : ";
         break;
     case ERROR:
-        std::cout << "[ERROR] ";
+        ss += "[ERROR] : ";
+        break;
+    case FATAL:
+        ss += "[FATAL] : ";
+        break;
+    case WARN:
+        ss += "[WARN] : ";
         break;
     default:
         break;
     }
-    std::cout << "time : " << msg << std::endl;
+    std::cout << ss << Timestamp::now().toString() << ", " << s << std::endl;
 }
 
-//设置日志级别
-void Log::setLogLevel(int level) {
-    level_ = level;
-}
+// int main() {
+//     LOG_INFO("%s, %s, %d : main error\n", __FILE__, __FUNCTION__, __LINE__);
+//     return 0;
+// }

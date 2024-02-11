@@ -1,34 +1,41 @@
 #include "InetAddress.h"
+#include "Log.h"
 
-
-InetAddress::InetAddress(uint16_t port, std::string ip) {
-    bzero(&addr_, sizeof addr_);
-    addr_.sin_family = AF_INET;
-    addr_.sin_addr.s_addr = inet_addr(ip.c_str());
-    addr_.sin_port = htons(port);
+std::string InetAddress::toIpPort() const {
+    return toIp() + " : " + std::to_string(toPort());
 }
 
 std::string InetAddress::toIp() const {
     char buf[64] = {0};
-    inet_ntop(AF_INET, &addr_.sin_addr, buf, sizeof buf);   //第二个参数是sin_addr
+    if (::inet_ntop(addr_.sin_family, &addr_.sin_addr, buf, sizeof buf) == nullptr) {
+        LOG_ERROR("%s--%s--%d--%d : inet_ntop error\n", __FILE__, __FUNCTION__, __LINE__, errno);
+    }
     return buf;
 }
 
-std::string InetAddress::toIpPort() const {
-    char buf[64] = {0};
-    inet_ntop(AF_INET, &addr_.sin_addr, buf, sizeof buf);   
-    size_t len = strlen(buf);
-    uint16_t port = ntohs(addr_.sin_port);
-    sprintf(buf + len, ":%u", port);
-    return buf;
+InetAddress::InetAddress(uint16_t port, const char* ip) {
+    bzero(&addr_, sizeof addr_);
+    addr_.sin_family = AF_INET;
+    if (::inet_pton(addr_.sin_family, ip, &addr_.sin_addr) != 1) {
+        LOG_FATAL("%s--%s--%d--%d : inet_pton error\n", __FILE__, __FUNCTION__, __LINE__, errno);
+    }
+    addr_.sin_port = htons(port);
 }
 
-uint16_t InetAddress::port() const {
-    return ntohs(addr_.sin_port);
+void InetAddress::setSockAddr(uint16_t port, const char* ip) {
+    bzero(&addr_, sizeof addr_);
+    addr_.sin_family = AF_INET;
+    if (::inet_pton(addr_.sin_family, ip, &addr_.sin_addr) != 1) {
+        LOG_FATAL("%s--%s--%d--%d : inet_pton error\n", __FILE__, __FUNCTION__, __LINE__, errno);
+    }
+    addr_.sin_port = htons(port);
 }
 
-// int main() {
-//     InetAddress inetaddress(8080);
-//     std::cout << inetaddress.toIpPort() << std::endl;
+
+// int main () {
+//     InetAddress ia;
+//     std::cout << ia.toIpPort() << std::endl;
+//     ia.setSockAddr(8080, "191.255.255.255");
+//     std::cout << ia.toIpPort() << std::endl;
 //     return 0;
 // }
